@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <!--<title>extJs</title>
+    <link href="http://cdn.sencha.com/ext/gpl/4.2.0/resources/css/ext-all.css" rel="stylesheet" />
+    <script src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all.js"></script>
+    <script type="text/javascript" src=app.js></script>-->
+</head>
+
+
+<body>
+<div>
+    <form method="post" action="/add">
+        <input type="text" name="pid" placeholder="პირადი ნომერი" />
+        <input type="text" name="name" placeholder="სახელი">
+        <input type="text" name="surname" placeholder="გვარი">
+        <button type="submit">დამატება</button>
+    </form>
+</div>
+<div>ძიება პირადი ნომრით</div>
+<form method="get" action="pidFilter">
+    <input type="text" name="pid">
+    <button type="submit">ძებნა</button>
+</form>
+<div>ძიება სახელით</div>
+<form method="get" action="nameFilter">
+    <input type="text" name="name">
+    <button type="submit">ძებნა</button>
+</form>
+<div>ძიება გვარით</div>
+<form method="get" action="surnameFilter">
+    <input type="text" name="surname">
+    <button type="submit">ძებნა</button>
+</form>
+<form method="post" action="deleteAll">
+    <button type="submit">ყველას წაშლა</button>
+</form>
+<a href="/">Home Page</a>
+<div>ადამიანების სია</div>
+{{#persons}}
+    <div>
+        <span>{{#pid}}
+            {{.}}
+        {{/pid}}</span>
+        <i>{{#name}}
+            {{.}}
+        {{/name}}</i>
+        <i>{{#surname}}
+            {{.}}
+        {{/surname}}</i>
+    </div>
+{{/persons}}
+
+</body>
+
+
+</html>
