@@ -20,10 +20,10 @@ public class MainPageController {
 
 
     @GetMapping("/")
-    public String main(Model model) {
+    public String main(Map<String, Object> model) {
         Iterable<Person> persons = personRepository.findAll();
 
-        model.addAttribute("persons",persons);
+        model.put("persons",persons);
 
         return "index";
     }
@@ -32,11 +32,11 @@ public class MainPageController {
     public String add(@RequestParam String pid,
                             @RequestParam String name,
                             @RequestParam String surname,
-                            Model model){
+                            Map<String, Object> model){
         Person person = new Person(pid,name,surname);
         personRepository.save(person);
         Iterable<Person> persons = personRepository.findAll();
-        model.addAttribute("persons",persons);
+        model.put("persons",persons);
         return "index";
     }
 
