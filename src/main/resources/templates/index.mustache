@@ -4,11 +4,12 @@
     <!--<title>extJs</title>
     <link href="http://cdn.sencha.com/ext/gpl/4.2.0/resources/css/ext-all.css" rel="stylesheet" />
     <script src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all.js"></script>
-    <script type="text/javascript" src=app.js></script>-->
+    <script type="text/javascript" src=PersonModel.js></script>-->
 </head>
 
 
 <body>
+<a href="/">Home Page</a>
 <div>
     <form method="post" action="/add">
         <input type="text" name="pid" placeholder="პირადი ნომერი" />
@@ -35,7 +36,10 @@
 <form method="post" action="deleteAll">
     <button type="submit">ყველას წაშლა</button>
 </form>
-<a href="/">Home Page</a>
+<form method="post" action="deleteByPid">
+    <input type="text" name="pid">
+    <button type="submit">წაშლა პირადი ნომრით</button>
+</form>
 <div>ადამიანების სია</div>
 {{#persons}}
     <div>

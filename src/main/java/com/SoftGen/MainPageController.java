@@ -46,11 +46,8 @@ public class MainPageController {
     {
         Iterable<Person> persons;
         if (pid != null && !pid.isEmpty()) {
-            if ("none".equals(pid)) {
-                persons = personRepository.findByPid("");
-            } else {
                 persons = personRepository.findByPid(pid);
-            }
+
         }
         else {
             persons = personRepository.findAll();
@@ -65,12 +62,9 @@ public class MainPageController {
     {
         Iterable<Person> persons;
         if (name != null && !name.isEmpty()) {
-            if ("none".equals(name)) {
-                persons = personRepository.findByName("");
-            } else {
                 persons = personRepository.findByName(name);
-            }
         }
+
         else {
             persons = personRepository.findAll();
         }
@@ -85,11 +79,7 @@ public class MainPageController {
     {
         Iterable<Person> persons;
         if (surname != null && !surname.isEmpty()) {
-            if ("none".equals(surname)) {
-                persons = personRepository.findBySurname("");
-            } else {
                 persons = personRepository.findBySurname(surname);
-            }
         }
         else {
             persons = personRepository.findAll();
@@ -101,8 +91,15 @@ public class MainPageController {
     @PostMapping("/deleteAll")
     public String deleteAll(){
         personRepository.deleteAll();
+        return "index";
+    }
 
-
+    @PostMapping("/deleteByPid")
+    public String deleteByPid(@RequestParam String pid,
+                              Map<String,Object> model){
+        personRepository.deleteByPid(pid);
+        Iterable<Person> persons = personRepository.findAll();
+        model.put("persons",persons);
         return "index";
     }
 }
